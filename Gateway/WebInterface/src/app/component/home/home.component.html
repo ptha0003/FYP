@@ -1,0 +1,63 @@
+<div id="Overview">
+  <h3 id="Heading">RFID localization using IoT Network</h3>
+  <br/>
+  <p id="mainText">
+    This is a web interface built for my indoor localization using RFID and IoT network FYP. The web interface has two main functions, first is to let the users register their RFID tag unique ID to the corresponding user details. The second function of this web interface is to display a table of all users that have been detected. The table displays the following data first and last name, contact information such as email and phone number, the rooms they have been in as well as the entry and exit time. 
+      <br />
+      <br />
+      The web interface is communicating with a MongoDB database. The MongoDB Database has two collections, one for storing the registered users and another collection for the detected users. When registering a user the information registered is stored in the registered user collection and any detected users will be stored in the other collection, where the display table will collect information from and display accordingly.
+      <br />
+      <br />
+      To get started please press the button below and start registering a user!     
+  </p>
+</div>
+  
+<br/>
+
+<div style="text-align: center">
+  <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Get Started</button>
+</div>
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div id="formContainer">
+        <h3>
+          Register User
+        </h3>
+      
+        <br/>
+        
+        <form>
+          <div id="NameContent">
+              <div class="row">
+                  <div class="col">
+                    <p style="padding-left: 33px">First Name</p>
+                    <input type="text" placeholder="First name" style="width: 150px" [(ngModel)]="fName">
+                  </div>
+                  <div class="col">
+                    <p style="padding-left: 32px">Last Name</p>
+                    <input type="text" placeholder="Last name" style="width: 150px" [(ngModel)]="lName">
+                  </div>
+                </div>
+          </div>
+  
+            <br/>
+            <p>Enter Number</p>
+            <input type="input" placeholder="Phon Num" [(ngModel)]="phoneNum">
+            <br/>
+            <p>Enter Email</p>
+            <input type="input"  placeholder="Email" [(ngModel)]="email">
+            <br/>
+            <p>Enter RFID UUID</p>
+            <input type="input"  placeholder="UUID" [(ngModel)]="RFID">
+            <br/>
+            <input type="submit" class="btn btn-dark" id="btnRound" (click)="onSaveUser()">
+        </form>
+      </div>
+  </div>
+</ng-template>

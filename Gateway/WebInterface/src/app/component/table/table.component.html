@@ -1,0 +1,37 @@
+<br/>
+<h2>
+  Displaying Tables
+</h2>
+
+<br/>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Phone #</th>
+      <th>Email</th>
+      <th>Room</th>
+      <th>Enter Time</th>
+      <th>Exit Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of usersDB">
+      <td>{{item.fName}} {{item.lName}}</td>
+      <td>{{item.PhoneNum}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.roomName}}</td>
+      <td>
+        <div *ngFor = "let times of item.enterTime">
+          {{times}}          
+        </div>
+      </td>
+      <td>
+        <div *ngFor = "let times of item.exitTime">
+          {{times}}          
+        </div>
+      </td>
+    </tr>
+  </tbody>
+  </table>
