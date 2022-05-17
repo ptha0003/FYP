@@ -87,7 +87,7 @@ void loop() {
 
   if(nano.check() == true)
   {
-    byte responseType = nano.parseResponse(); //Break response into tag ID, RSSI, frequency, and timestamp
+    byte responseType = nano.parseResponse(); 
 
     if(responseType == RESPONSE_IS_KEEPALIVE) 
     {//Serial.println("Scanning");
@@ -99,15 +99,16 @@ void loop() {
        for(int i =7; i < nano.getTagEPCBytes(); i++)
        {
         if(nano.msg[31+i] < 0x10) ID.concat("0");
-        ID.concat(String(nano.msg[31 + i], HEX));
+        ID.concat(String(nano.msg[31 + i], HEX)); //stored EPC into one single text string for LoRa
        }
        LoRaTxMSG.concat(ID);
        int rssi = nano.getTagRSSI();
        LoRaTxMSG.concat("/");
        LoRaTxMSG.concat(rssi);
 
-       if(!prevID.equals(ID))
+       if(!prevID.equals(ID)) //capature one UID/EPC at a time to avoid conflict at gateway
        {
+          //transmit via LoRa
           char radioPacket[LoRaTxMSG.length() + 1];
           LoRaTxMSG.toCharArray(radioPacket,LoRaTxMSG.length()+1);
           itoa(0, radioPacket+LoRaTxMSG.length()+1, LoRaTxMSG.length()+1);
@@ -123,7 +124,7 @@ void loop() {
 
   current = millis();
   if(current - StartClearTimer >= 8000)
-  {
+  { //clear prevID after 8s so that user can be detected again
     prevID = "";
     StartClearTimer = current;
     
@@ -133,7 +134,7 @@ void loop() {
 
 
 
-boolean setupNano(long baudRate)
+boolean setupNano(long baudRate) //part of M6E nano library code (needed to set up the M6E nano reader) source below
 {
   nano.begin(softSerial); //Tell the library to communicate over software serial port
 
@@ -179,3 +180,7 @@ boolean setupNano(long baudRate)
 
   return (true); //We are ready to rock
 }
+
+//sources & references
+//https://github.com/adafruit/RadioHead
+//https://github.com/sparkfun/SparkFun_Simultaneous_RFID_Tag_Reader_Library

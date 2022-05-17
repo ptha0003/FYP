@@ -79,7 +79,8 @@ void setup() {
 void loop() {
   String LoRaStr = roomName;
   LoRaStr.concat("\\ID:");
-    // Getting ready for Reading PICCs
+  
+  // Getting ready for Reading PICCs
   if ( ! mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
   return;
   }
@@ -89,7 +90,7 @@ void loop() {
   tagID = "";
   for ( uint8_t i = 0; i < 4; i++) { // The MIFARE PICCs that we use have 4 byte UID
   //readCard[i] = mfrc522.uid.uidByte[i];
-  tagID.concat(String(mfrc522.uid.uidByte[i], HEX)); // Adds the 4 bytes in a single String variable
+  tagID.concat(String(mfrc522.uid.uidByte[i], HEX)); //concat the RFID UID into a single string variable to get ready for transmit
   }
   tagID.toUpperCase();
   mfrc522.PICC_HaltA(); // Stop reading
@@ -114,3 +115,8 @@ boolean getID()
   Serial.println(tagID);
   return true;
 }
+
+
+//sources & references
+//https://github.com/miguelbalboa/rfid
+//https://github.com/adafruit/RadioHead
