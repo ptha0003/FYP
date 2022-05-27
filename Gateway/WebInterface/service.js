@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname, "dist/web-interface")));
 var userName = 'XXXX'; //enter your db username
-var pass = 'XXX'; //enter your db pass
+var pass = 'XXXX'; //enter your db pass
 var mongooseConnectionString = `mongodb://${userName}:${pass}@192.168.0.14:27017/RFIDFYP`;
 //connection to mongoDB using mongoose
 mongoose.connect(mongooseConnectionString, function (err) {

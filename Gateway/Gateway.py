@@ -146,7 +146,15 @@ if __name__ == '__main__':
 #             startTime = currentTime
             
         
-        
+
+
+
+
+
+#references:
+#https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
+#https://docs.python.org/3/library/datetime.html
+#https://create.arduino.cc/projecthub/ansh2919/serial-communication-between-python-and-arduino-e7cce0
         
         
 

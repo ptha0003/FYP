@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  registeredUser: any[] = [];
+  registeredUser: any[] = []; //not needed
 
   title = 'appBootstrap';
   closeResult!: string;
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
+ //function to save user when button is clicked
   onSaveUser() {
     let obj = { fName: this.fName, lName: this.lName, phoneNum:this.phoneNum, email:this.email, RFID: this.RFID };
     this.dbService.createUser(obj).subscribe(result => {

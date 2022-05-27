@@ -2,7 +2,7 @@
 #include <MFRC522.h>
 #include <RH_RF69.h>
 
-#define RF69_FREQ 434.0
+#define RF69_FREQ 434.0 //default transceiver module
 #define RFM69_INT     3  // 
 #define RFM69_CS      4  //
 #define RFM69_RST     2  // "A"
@@ -12,7 +12,7 @@
 
 
 #define roomName "Room 1";
-byte readCard[4];
+byte readCard[4]; 
 String tagID = "";
 
 // Create instances

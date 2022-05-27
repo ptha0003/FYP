@@ -7,7 +7,7 @@ import { DatabaseService } from "../../database.service";
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  public usersDB: any[] = [];
+  public usersDB: any[] = []; //store database data into this array
   constructor(private dbService: DatabaseService) { }
 
   ngOnInit(): void {

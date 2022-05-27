@@ -17,7 +17,8 @@
 <div style="text-align: center">
   <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Get Started</button>
 </div>
-   
+
+<!-- Modal html code below -->
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -31,7 +32,7 @@
         </h3>
       
         <br/>
-        
+        <!-- Main content (letting user enter in the details) -->
         <form>
           <div id="NameContent">
               <div class="row">

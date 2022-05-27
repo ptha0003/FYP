@@ -4,14 +4,14 @@
 #include <RH_RF69.h>
 
 
-#define RF69_FREQ 434.0
+#define RF69_FREQ 434.0 //set deafault transceiver module frequency 
 #define RFM69_INT     21  // 
 #define RFM69_CS      22  //
 #define RFM69_RST     24  // "A"
 #define LED           13
-#define RoomName "Room1"
+#define RoomName "Room2"
 
-SoftwareSerial softSerial(12, 13); //RX, TX
+SoftwareSerial softSerial(12, 13); //RX, TX for M6E nano module
 RFID nano; //Create instance
 
 // Singleton instance of the radio driver
